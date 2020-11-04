@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Add a Dinosaur</h1>
+  <%= simple_form_for [@park, @dinosaur] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :species, collection: Dinosaur::SPECIES, include_blank: false %>
+    <%= f.input :image_url %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
