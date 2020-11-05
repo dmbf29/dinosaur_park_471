@@ -1,0 +1,7 @@
+<div class="container mt-3">
+  <h1>Add <%= @dinosaur.name.capitalize %> to an attraction</h1>
+  <%= simple_form_for [@dinosaur, @shift] do |f| %>
+    <%= f.association :attraction, include_blank: false, collection: @attractions, input_html: { class: 'select2' } %>
+    <%= f.submit 'Add', class: 'btn btn-primary' %>
+  <% end %>
+</div>

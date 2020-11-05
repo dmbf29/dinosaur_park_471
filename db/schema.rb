@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_082825) do
+ActiveRecord::Schema.define(version: 2020_11_05_081242) do
+
+  create_table "attractions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dinosaurs", force: :cascade do |t|
     t.string "name"
@@ -29,5 +35,16 @@ ActiveRecord::Schema.define(version: 2020_11_04_082825) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shifts", force: :cascade do |t|
+    t.integer "dinosaur_id", null: false
+    t.integer "attraction_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attraction_id"], name: "index_shifts_on_attraction_id"
+    t.index ["dinosaur_id"], name: "index_shifts_on_dinosaur_id"
+  end
+
   add_foreign_key "dinosaurs", "parks"
+  add_foreign_key "shifts", "attractions"
+  add_foreign_key "shifts", "dinosaurs"
 end
