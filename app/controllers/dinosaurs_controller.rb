@@ -24,7 +24,7 @@ class DinosaursController < ApplicationController
   private
 
   def dinosaur_params
-    params.require(:dinosaur).permit(:name, :species, :image_url)
+    params.require(:dinosaur).permit(:name, :species, :image_url, :photo)
   end
 
   def set_park

@@ -4,6 +4,7 @@ class Dinosaur < ApplicationRecord
   has_many :attractions, through: :shifts
   SPECIES = ['stegasaurus', 'tyrannosaurus', 'brachiosaurus', 'alex']
   validates :name, presence: true
-  validates :image_url, presence: true
+  # validates :image_url, presence: true
   validates :species, inclusion: { in: SPECIES }
+  has_one_attached :photo
 end
