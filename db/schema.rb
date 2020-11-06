@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_11_05_081242) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_081242) do
     t.string "name"
     t.string "species"
     t.string "image_url"
-    t.integer "park_id", null: false
+    t.bigint "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_dinosaurs_on_park_id"
@@ -36,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_11_05_081242) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.integer "dinosaur_id", null: false
-    t.integer "attraction_id", null: false
+    t.bigint "dinosaur_id", null: false
+    t.bigint "attraction_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["attraction_id"], name: "index_shifts_on_attraction_id"
